@@ -95,25 +95,6 @@
         transform: translateY(0);
       }
 
-      .video-container {
-        position: relative;
-        padding-bottom: 56.25%;
-        height: 0;
-        overflow: hidden;
-        max-width: 100%;
-        background: #000;
-        border-radius: 1rem;
-      }
-
-      .video-container iframe,
-      .video-container div { /* Ditambahkan selector div */
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-      }
-
       .angled-divider {
         position: relative;
       }
@@ -132,7 +113,6 @@
         bottom: -1px;
         clip-path: polygon(0 0, 100% 100%, 0 100%);
         background: #eff6ff;
-        /* Warna section di bawahnya */
       }
 
       .angled-bottom-left::after {
@@ -150,8 +130,38 @@
       .gallery-thumb.active {
         transform: scale(1.05);
         opacity: 1;
-        box-shadow: 0 0 0 3px #fbbf24;
-        /* Warna amber */
+        /* box-shadow yang menyebabkan kotak kuning sudah dihapus */
+      }
+
+      .phone-frame {
+        position: relative;
+        width: 100%;
+        max-width: 320px;
+        height: 640px;
+        margin: auto;
+        border: 12px solid #1f2937;
+        border-radius: 40px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        background: #111827;
+        padding: 4px;
+      }
+
+      .phone-screen {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        border-radius: 28px;
+        overflow: hidden;
+      }
+
+      .phone-screen iframe,
+      .phone-screen div#youtube-player {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
       }
     </style>
   </head>
@@ -167,12 +177,11 @@
             >
               <img
                 src="img/Logo.png"
-                alt="Logo Toko Kristiano"
-                class="h-12 w-auto mr-2"
+                alt="Toko Kristiano Logo"
+                style="height: 60px;width: auto;"
               />
             </a>
           </div>
-
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-8">
               <a
@@ -207,7 +216,6 @@
               >
             </div>
           </div>
-
           <div class="md:hidden flex items-center">
             <button
               id="hamburger-button"
@@ -230,7 +238,6 @@
           </div>
         </div>
       </div>
-
       <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg">
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           <a
@@ -278,16 +285,25 @@
               <h1
                 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight fade-in-up"
               >
-                Solusi ATK & Fotokopi
-                <span class="text-amber-400">Terdepan</span>
+                Penyedia Kebutuhan Anda <br />
+                <span class="text-amber-400">Toko</span>
+                <span
+                  style="
+                    color: #2563eb;
+                    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+                  "
+                  >Kristiano</span
+                >
               </h1>
               <p
                 class="text-lg sm:text-xl text-white/90 mb-8 leading-relaxed fade-in-up"
                 style="transition-delay: 150ms"
               >
-                Dari kebutuhan kantor hingga proyek kreatif, kami menyediakan
-                layanan fotokopi berkualitas tinggi dan produk ATK terlengkap
-                dengan harga terjangkau.
+                Toko Kristiano hadir di Balikpapan untuk melayani kebutuhan
+                Anda, mulai dari percetakan, fotocopy, alat tulis kantor, hingga
+                berbagai kebutuhan lainnya. Dengan pelayanan yang ramah, cepat,
+                dan hasil berkualitas, kami siap menjadi mitra terpercaya untuk
+                mendukung aktivitas Anda.
               </p>
               <div
                 class="flex flex-col sm:flex-row gap-4 fade-in-up"
@@ -337,23 +353,35 @@
             </div>
             <div class="floating fade-in-up" style="transition-delay: 450ms">
               <div
-                class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20"
+                class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20 relative overflow-hidden"
               >
-                <div class="text-center">
-                  <div class="text-6xl mb-4">🖨️</div>
-                  <h3 class="text-2xl font-bold text-white mb-4">
+                <div class="absolute inset-0 opacity-10">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-full h-full"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    color="#ffffff"
+                  >
+                    <path
+                      d="M18 7H6V3h12v4zm0 5.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM19 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 18H6v-4h12v4zm0-6H5V9h14v5z"
+                    ></path>
+                  </svg>
+                </div>
+                <div class="text-center relative">
+                  <h3 class="text-2xl font-bold text-white mb-6">
                     Layanan Express
                   </h3>
                   <div class="grid grid-cols-2 gap-4 text-white/90">
                     <div class="bg-white/10 rounded-xl p-4">
-                      <div class="text-2xl mb-2">⚡</div>
-                      <div class="font-semibold">Cepat</div>
-                      <div class="text-sm">5 menit siap</div>
+                      <div class="text-3xl mb-2">⚡</div>
+                      <div class="font-bold text-lg">Cepat</div>
+                      <div class="text-sm opacity-80">5 menit siap</div>
                     </div>
                     <div class="bg-white/10 rounded-xl p-4">
-                      <div class="text-2xl mb-2">💎</div>
-                      <div class="font-semibold">Berkualitas</div>
-                      <div class="text-sm">HD Print</div>
+                      <div class="text-3xl mb-2">💎</div>
+                      <div class="font-bold text-lg">Berkualitas</div>
+                      <div class="text-sm opacity-80">HD Print</div>
                     </div>
                   </div>
                 </div>
@@ -522,7 +550,7 @@
                 Kami percaya bahwa alat yang tepat dapat meningkatkan
                 produktivitas. Oleh karena itu, kami hanya menyediakan produk
                 ATK dari merek terpercaya yang telah teruji kualitas dan daya
-                thannya.
+                tahannya.
               </p>
               <ul class="space-y-4 text-gray-700">
                 <li class="flex items-start">
@@ -568,7 +596,7 @@
                 />
                 <img
                   src="https://images.unsplash.com/photo-1516962215378-7fa2e137ae93?w=800&auto=format&fit=crop&q=60"
-                  alt="Thumbnail 2"
+                  alt="Thumbnail 3"
                   class="gallery-thumb rounded-lg w-full h-24 object-cover"
                 />
               </div>
@@ -590,13 +618,48 @@
               style="transition-delay: 150ms"
             >
               Intip bagaimana kami memastikan setiap produk dan layanan memiliki
-              kualitas terbaik untuk Anda.
+              kualitas terbaik untuk Anda. (Klik Logo Suara Untuk Mengaktifkan Suara)
             </p>
           </div>
-          <div class="fade-in-up shadow-2xl" style="transition-delay: 300ms">
-            <div class="video-container">
-              <div id="youtube-player"></div>
+          <div class="fade-in-up" style="transition-delay: 300ms">
+            <div class="phone-frame">
+              <div class="phone-screen">
+                <div id="youtube-player"></div>
               </div>
+              <button
+                id="mute-toggle-button"
+                class="absolute bottom-6 right-6 bg-black/40 text-white rounded-full p-3 z-10 focus:outline-none hover:bg-black/60 transition-colors"
+              >
+                <svg
+                  id="icon-muted"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="currentColor"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06zM10.025 8.025a.5.5 0 0 0 0 .707l.707.707a.5.5 0 0 0 .707 0l.707-.707a.5.5 0 0 0 0-.707l-.707-.707a.5.5 0 0 0-.707 0l-.707.707zm2.12-2.12a.5.5 0 0 0 0 .707l.707.707a.5.5 0 0 0 .707 0l.707-.707a.5.5 0 0 0 0-.707l-.707-.707a.5.5 0 0 0-.707 0l-.707.707zM10.718 4.282a.5.5 0 0 0 0 .707l.708.707a.5.5 0 0 0 .707 0l.707-.707a.5.5 0 0 0 0-.707l-.707-.707a.5.5 0 0 0-.707 0l-.708.707z"
+                  />
+                </svg>
+                <svg
+                  id="icon-unmuted"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5 hidden"
+                  fill="currentColor"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"
+                  />
+                  <path
+                    d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z"
+                  />
+                  <path
+                    d="M8.707 11.182A4.486 4.486 0 0 0 10.025 8a4.486 4.486 0 0 0-1.318-3.182L8 5.525A3.489 3.489 0 0 1 9.025 8 3.489 3.489 0 0 1 8 10.475l.707.707zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -707,11 +770,11 @@
           </p>
           <div class="fade-in-up" style="transition-delay: 300ms">
             <img
-              src="https://images.unsplash.com/photo-1599902585293-b439a35056de?q=80&w=1887&auto=format&fit=crop"
+              src="img/profil.jpeg"
               alt="Foto Pemilik dari Makassar"
               class="w-32 h-32 rounded-full mx-auto mb-6 object-cover shadow-lg border-4 border-white"
             />
-            <h3 class="text-2xl font-bold text-gray-900">Kristiano Daeng</h3>
+            <h3 class="text-2xl font-bold text-gray-900">Sofyan</h3>
             <p class="text-blue-700 font-semibold mb-4">Founder & CEO</p>
             <p class="text-gray-600 leading-relaxed max-w-2xl mx-auto">
               "Sejak awal, Toko Kristiano didirikan atas dasar komitmen untuk
@@ -732,57 +795,185 @@
                 Siap melayani kebutuhan ATK dan fotokopi Anda. Tim customer
                 service kami selalu standby untuk membantu!
               </p>
-              <div class="space-y-6">
-                <div class="flex items-center">
-                  <div class="bg-blue-700 rounded-full p-3 mr-4">
-                    <div class="text-white text-xl">📍</div>
+              <div class="space-y-3">
+                <div class="flex items-center p-4 bg-gray-800 rounded-lg">
+                  <div
+                    class="flex-shrink-0 h-8 w-8 flex items-center justify-center"
+                  >
+                    <svg
+                      class="h-7 w-7 text-gray-400"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                    </svg>
                   </div>
-                  <div>
-                    <h4 class="text-white font-semibold">Alamat Toko</h4>
-                    <p class="text-gray-300">
-                      Jl. Merdeka No. 123, Jakarta Pusat 10110
+                  <div class="ml-4">
+                    <h4 class="text-lg font-semibold text-white">
+                      Alamat Toko
+                    </h4>
+                    <p class="text-gray-400">
+                      Jl. Letjen S. Parman, Gunungsari Ulu, Kec. Balikpapan
+                      Tengah, Kota Balikpapan, Kalimantan Timur 76122
                     </p>
                   </div>
                 </div>
-                <div class="flex items-center">
-                  <div class="bg-blue-700 rounded-full p-3 mr-4">
-                    <div class="text-white text-xl">📞</div>
+                <div class="flex items-center p-4 bg-gray-800 rounded-lg">
+                  <div
+                    class="flex-shrink-0 h-8 w-8 flex items-center justify-center"
+                  >
+                    <svg
+                      class="h-6 w-6 text-gray-400"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                      />
+                    </svg>
                   </div>
-                  <div>
-                    <h4 class="text-white font-semibold">Telepon & WhatsApp</h4>
-                    <p class="text-gray-300">
-                      (021) 1234-5678 (Telepon)<br />0812-3456-7890 (WhatsApp)
-                    </p>
-                  </div>
-                </div>
-                <div class="flex items-center">
-                  <div class="bg-blue-700 rounded-full p-3 mr-4">
-                    <div class="text-white text-xl">📷</div>
-                  </div>
-                  <div>
-                    <h4 class="text-white font-semibold">Instagram</h4>
-                    <p class="text-gray-300">@tokokristiano</p>
-                  </div>
-                </div>
-                <div class="flex items-center">
-                  <div class="bg-blue-700 rounded-full p-3 mr-4">
-                    <div class="text-white text-xl">🎵</div>
-                  </div>
-                  <div>
-                    <h4 class="text-white font-semibold">TikTok</h4>
-                    <p class="text-gray-300">@toko.kristiano</p>
+                  <div class="ml-4">
+                    <h4 class="text-lg font-semibold text-white">Telepon</h4>
+                    <p class="text-gray-400">081351774229</p>
                   </div>
                 </div>
-                <div class="flex items-center">
-                  <div class="bg-blue-700 rounded-full p-3 mr-4">
-                    <div class="text-white text-xl">⏰</div>
+                <a
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=tokokristiano1@gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="group flex items-center p-4 bg-gray-800 rounded-lg hover:bg-red-700 transition-colors duration-300"
+                >
+                  <div
+                    class="flex-shrink-0 h-8 w-8 flex items-center justify-center"
+                  >
+                    <svg
+                      class="h-6 w-6 text-white"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                      ></path>
+                    </svg>
                   </div>
-                  <div>
-                    <h4 class="text-white font-semibold">Jam Operasional</h4>
-                    <p class="text-gray-300">
-                      Senin - Sabtu: 08:00 - 21:00<br />Minggu: 09:00 - 18:00
-                    </p>
+                  <div class="ml-4">
+                    <h4 class="text-lg font-semibold text-white">Email 1</h4>
+                    <p class="text-gray-300">tokokristiano1@gmail.com</p>
                   </div>
+                </a>
+                <a
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=tokokristiano@yahoo.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="group flex items-center p-4 bg-gray-800 rounded-lg hover:bg-amber-600 transition-colors duration-300"
+                >
+                  <div
+                    class="flex-shrink-0 h-8 w-8 flex items-center justify-center"
+                  >
+                    <svg
+                      class="h-7 w-7 text-white"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9 12l.01 0M15 12l.01 0M3 12l.01 0M21 12l.01 0m-8.01-4.01l.01 0m0 8.02l.01 0M9.172 9.172a4 4 0 015.656 0M14.828 14.828a4 4 0 01-5.656 0M9 12a3 3 0 116 0 3 3 0 01-6 0z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div class="ml-4">
+                    <h4 class="text-lg font-semibold text-white">Email 2</h4>
+                    <p class="text-gray-300">tokokristiano@yahoo.com</p>
+                  </div>
+                </a>
+              </div>
+              <div class="mt-8">
+                <h4 class="text-lg font-semibold text-white mb-4">
+                  Ikuti Kami
+                </h4>
+                <div class="flex flex-col sm:flex-row gap-4">
+                  <a
+                    href="https://www.instagram.com/tokokristiano/?igsh=Z2I3cXk2cnJkdmcw&utm_source=qr#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                    class="flex flex-1 items-center justify-center p-3 rounded-lg bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-white font-bold shadow-lg transition-transform duration-300 ease-in-out hover:scale-105"
+                  >
+                    <svg
+                      class="w-6 h-6 mr-3"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.05 2.525c.636-.247 1.363-.416 2.427-.465C9.53 2.013 9.884 2 12.315 2zm-1.043.98a3.903 3.903 0 00-1.114 2.155c-.045.842-.045 2.712-.045 3.865s0 3.023.045 3.865c.043.83.26 1.542.54 2.067.295.555.688 1.003 1.213 1.298.51.285 1.16.48 1.95.525.86.045 2.73.045 3.885.045s3.025 0 3.885-.045c.79-.045 1.44-.24 1.95-.525.525-.295.918-.743 1.213-1.298.28-.525.497-1.237.54-2.067.045-.842.045-2.712.045-3.865s0-3.023-.045-3.865c-.043-.83-.26-1.542-.54-2.067a3.89 3.89 0 00-1.213-1.298c-.51-.285-1.16-.48-1.95-.525-.86-.045-2.73-.045-3.885-.045s-3.025 0-3.885.045c-.79.045-1.44.24-1.95.525a3.89 3.89 0 00-1.213 1.298c-.28.525-.497 1.237-.54 2.067zm2.25 1.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                    <span>Instagram</span>
+                  </a>
+                  <a
+                    href="https://wa.me/6281351774229"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="WhatsApp"
+                    class="flex flex-1 items-center justify-center p-3 rounded-lg bg-green-600 text-white font-bold shadow-lg transition-transform duration-300 ease-in-out hover:scale-105"
+                  >
+                    <svg
+                      class="w-6 h-6 mr-3"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+                      ></path>
+                    </svg>
+                    <span>WhatsApp</span>
+                  </a>
+                  <a
+                    href="https://www.tiktok.com/@tokokristiano?_t=ZS-90FCEXPJMDn&_r=1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="TikTok"
+                    class="flex flex-1 items-center justify-center p-3 rounded-lg bg-black border border-gray-600 text-white font-bold shadow-lg transition-transform duration-300 ease-in-out hover:scale-105"
+                  >
+                    <svg
+                      class="w-6 h-6 mr-3"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12.525.02c1.31-.02 2.61-.01 3.91.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-2.43.03-4.63-1.1-6-3.02-1.27-1.78-1.56-4.07-1.02-6.22.48-1.89 1.67-3.48 3.18-4.57.51-.36 1.06-.66 1.63-.91.02-3.3.01-6.6-.02-9.9.08-1.07.39-2.12 1.02-3.02.76-1.06 1.88-1.8 3.08-2.26z"
+                      ></path>
+                    </svg>
+                    <span>TikTok</span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -792,7 +983,7 @@
             >
               <div class="w-full h-full rounded-2xl overflow-hidden shadow-2xl">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3988.8610797731585!2d116.841032!3d-1.2551057!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df1477191938f31%3A0x45c94a18b9107d3e!2sTOKO%20KRISTIANO!5e0!3m2!1sid!2sid!4v1759385215464!5m2!1sid!2sid"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.854611585839!2d116.83780337589416!3d-1.259976935639918!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df1477ea2e8312d%3A0x833b5c2a1a2d7b42!2sToko%20Kristiano!5e0!3m2!1sen!2sid!4v1727980299691!5m2!1sen!2sid"
                   width="600"
                   height="450"
                   style="border: 0"
@@ -810,48 +1001,25 @@
     <footer class="bg-black text-white py-12 atk-pattern-dark">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
-          class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:text-left text-center"
         >
-          <div class="fade-in-up">
-            <img
-              src="img/Logo.png"
-              alt="Logo Toko Kristiano"
-              class="h-14 w-auto mb-4 mx-auto md:mx-0"
-            />
-            <p class="text-gray-400 mb-4">
-              Solusi terpercaya untuk kebutuhan ATK dan fotokopi sejak 2014.
+          <div class="fade-in-up md:col-span-2 lg:col-span-1">
+            <a
+              href="#home"
+              class="flex items-center text-2xl font-bold text-white mb-4 justify-center md:justify-start"
+            >
+              <img
+                src="img/Logo.png"
+                alt="Toko Kristiano Logo"
+                style="height: 75px; width: auto;"
+              />
+            </a>
+            <p class="text-gray-400 mb-6">
+              Solusi terpercaya untuk kebutuhan ATK dan fotokopi.
             </p>
-            <div class="flex space-x-4 justify-center md:justify-start">
-              <a
-                href="#"
-                class="bg-gray-700 hover:bg-blue-600 p-2 rounded-full transition-colors"
-                >📘</a
-              >
-              <a
-                href="https://www.instagram.com/tokokristiano"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="bg-gray-700 hover:bg-pink-600 p-2 rounded-full transition-colors"
-                >📷</a
-              >
-              <a
-                href="https://www.tiktok.com/@toko.kristiano"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="bg-gray-700 hover:bg-black p-2 rounded-full transition-colors"
-                >🎵</a
-              >
-              <a
-                href="https://wa.me/6281234567890"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="bg-gray-700 hover:bg-green-600 p-2 rounded-full transition-colors"
-                >💬</a
-              >
-            </div>
           </div>
           <div class="fade-in-up" style="transition-delay: 150ms">
-            <h4 class="font-semibold mb-4">Layanan</h4>
+            <h4 class="text-xl font-semibold mb-4">Layanan</h4>
             <ul class="space-y-2 text-gray-400">
               <li>
                 <a href="#services" class="hover:text-white transition-colors"
@@ -876,7 +1044,7 @@
             </ul>
           </div>
           <div class="fade-in-up" style="transition-delay: 300ms">
-            <h4 class="font-semibold mb-4">Kategori ATK</h4>
+            <h4 class="text-xl font-semibold mb-4">Kategori ATK</h4>
             <ul class="space-y-2 text-gray-400">
               <li>
                 <a href="#info-atk" class="hover:text-white transition-colors"
@@ -901,12 +1069,43 @@
             </ul>
           </div>
           <div class="fade-in-up" style="transition-delay: 450ms">
-            <h4 class="font-semibold mb-4">Kontak</h4>
+            <h4 class="text-xl font-semibold mb-4">Kontak</h4>
             <ul class="space-y-2 text-gray-400">
-              <li>📞 (021) 1234-5678</li>
-              <li>📱 0812-3456-7890 (WA)</li>
-              <li>✉️ info@tokokristiano.com</li>
-              <li>📍 Jakarta Pusat</li>
+              <li>📞 081351774229</li>
+              <li>
+                📱
+                <a
+                  href="https://wa.me/6281351774229"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-white transition-colors"
+                  >081351774229</a
+                >
+              </li>
+              <li>
+                ✉️
+                <a
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=tokokristiano@yahoo.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-white transition-colors"
+                  >tokokristiano@yahoo.com</a
+                >
+              </li>
+              <li>
+                ✉️
+                <a
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=tokokristiano1@gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-white transition-colors"
+                  >tokokristiano1@gmail.com</a
+                >
+              </li>
+              <li class="pt-2">
+                📍 Jl. Letjen S. Parman, Gunungsari Ulu, Kec. Balikpapan Tengah,
+                Kota Balikpapan, Kalimantan Timur 76122
+              </li>
             </ul>
           </div>
         </div>
@@ -919,20 +1118,19 @@
     </footer>
 
     <script>
-      // === PERUBAHAN DIMULAI DI SINI ===
       let player;
-      // Fungsi ini akan dipanggil secara otomatis oleh YouTube API setelah scriptnya siap
+
       function onYouTubeIframeAPIReady() {
         player = new YT.Player("youtube-player", {
           height: "100%",
           width: "100%",
-          videoId: "dQw4w9WgXcQ", // ID video dari URL YouTube
+          videoId: "msdlAIP3wtg", // ID Video YouTube Shorts Anda
           playerVars: {
-            autoplay: 1, // Mencoba untuk autoplay
-            controls: 1, // Tampilkan kontrol video
-            mute: 1, // <<< PERUBAHAN UTAMA: Video akan dimulai dalam kondisi mute
-            loop: 1, // Ulangi video
-            playlist: "dQw4w9WgXcQ", // Diperlukan untuk loop
+            autoplay: 1,
+            controls: 0,
+            mute: 1,
+            loop: 1,
+            playlist: "msdlAIP3wtg", // Diperlukan untuk loop
           },
           events: {
             onReady: onPlayerReady,
@@ -940,29 +1138,24 @@
         });
       }
 
-      // Fungsi ini dipanggil saat player video sudah siap
       function onPlayerReady(event) {
-        // Observer untuk section video
         const videoSection = document.getElementById("video-atk");
         const videoObserver = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
-                // Jika section terlihat, coba putar video
                 player.playVideo();
-                // Opsional: Coba unmute setelah video diputar (masih bisa diblokir browser)
-                // player.unMute();
               } else {
-                player.pauseVideo(); // Jeda video jika section tidak terlihat
+                player.pauseVideo();
               }
             });
           },
-          { threshold: 0.5 } // 0.5 berarti 50% section harus terlihat
+          {
+            threshold: 0.5,
+          }
         );
-
         videoObserver.observe(videoSection);
       }
-      // === PERUBAHAN BERAKHIR DI SINI ===
 
       document.addEventListener("DOMContentLoaded", function () {
         // --- Script untuk Hamburger Menu ---
@@ -991,7 +1184,9 @@
               }
             });
           },
-          { threshold: 0.1 }
+          {
+            threshold: 0.1,
+          }
         );
         animatedElements.forEach((el) => observer.observe(el));
 
@@ -1015,7 +1210,9 @@
         gsap.registerPlugin(ScrollTrigger);
         gsap.utils.toArray("[data-counter]").forEach((el) => {
           const target = parseInt(el.getAttribute("data-counter"), 10);
-          const obj = { value: 0 };
+          const obj = {
+            value: 0,
+          };
           gsap.to(obj, {
             value: target,
             duration: 2,
@@ -1029,6 +1226,25 @@
               el.innerText = Math.round(obj.value).toLocaleString("id-ID");
             },
           });
+        });
+
+        // --- Ditambahkan: Script untuk Tombol Mute/Unmute Video ---
+        const muteToggleButton = document.getElementById("mute-toggle-button");
+        const iconMuted = document.getElementById("icon-muted");
+        const iconUnmuted = document.getElementById("icon-unmuted");
+
+        muteToggleButton.addEventListener("click", () => {
+          if (player && typeof player.isMuted === "function") {
+            if (player.isMuted()) {
+              player.unMute();
+              iconMuted.classList.add("hidden");
+              iconUnmuted.classList.remove("hidden");
+            } else {
+              player.mute();
+              iconMuted.classList.remove("hidden");
+              iconUnmuted.classList.add("hidden");
+            }
+          }
         });
       });
     </script>
