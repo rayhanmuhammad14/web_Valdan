@@ -2,17 +2,16 @@
 <html lang="id" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale-1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Toko Kristiano - Solusi ATK & Fotokopi Terdepan</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
     <style>
       body {
         box-sizing: border-box;
       }
-
-      /* === PERUBAHAN DIMULAI DI SINI === */
 
       /* Pola Ornamen ATK Disempurnakan - Untuk Latar Belakang TERANG */
       .atk-pattern-light {
@@ -44,8 +43,6 @@
         position: relative;
         z-index: 2;
       }
-
-      /* === PERUBAHAN BERAKHIR DI SINI === */
 
       .card-hover {
         transition: all 0.3s ease;
@@ -108,7 +105,8 @@
         border-radius: 1rem;
       }
 
-      .video-container iframe {
+      .video-container iframe,
+      .video-container div { /* Ditambahkan selector div */
         position: absolute;
         top: 0;
         left: 0;
@@ -597,14 +595,8 @@
           </div>
           <div class="fade-in-up shadow-2xl" style="transition-delay: 300ms">
             <div class="video-container">
-              <iframe
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                title="Contoh Video YouTube"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-              ></iframe>
-            </div>
+              <div id="youtube-player"></div>
+              </div>
           </div>
         </div>
       </section>
@@ -927,6 +919,51 @@
     </footer>
 
     <script>
+      // === PERUBAHAN DIMULAI DI SINI ===
+      let player;
+      // Fungsi ini akan dipanggil secara otomatis oleh YouTube API setelah scriptnya siap
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player("youtube-player", {
+          height: "100%",
+          width: "100%",
+          videoId: "dQw4w9WgXcQ", // ID video dari URL YouTube
+          playerVars: {
+            autoplay: 1, // Mencoba untuk autoplay
+            controls: 1, // Tampilkan kontrol video
+            mute: 1, // <<< PERUBAHAN UTAMA: Video akan dimulai dalam kondisi mute
+            loop: 1, // Ulangi video
+            playlist: "dQw4w9WgXcQ", // Diperlukan untuk loop
+          },
+          events: {
+            onReady: onPlayerReady,
+          },
+        });
+      }
+
+      // Fungsi ini dipanggil saat player video sudah siap
+      function onPlayerReady(event) {
+        // Observer untuk section video
+        const videoSection = document.getElementById("video-atk");
+        const videoObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                // Jika section terlihat, coba putar video
+                player.playVideo();
+                // Opsional: Coba unmute setelah video diputar (masih bisa diblokir browser)
+                // player.unMute();
+              } else {
+                player.pauseVideo(); // Jeda video jika section tidak terlihat
+              }
+            });
+          },
+          { threshold: 0.5 } // 0.5 berarti 50% section harus terlihat
+        );
+
+        videoObserver.observe(videoSection);
+      }
+      // === PERUBAHAN BERAKHIR DI SINI ===
+
       document.addEventListener("DOMContentLoaded", function () {
         // --- Script untuk Hamburger Menu ---
         const hamburgerButton = document.getElementById("hamburger-button");
